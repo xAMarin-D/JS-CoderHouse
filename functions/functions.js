@@ -50,7 +50,7 @@ document
     window.location.href = "html/products.html";
     Swal.fire({
       icon: "success",
-      title: "El formulario se llenado exitosamente!",
+      title: "El formulario se ha completado exitosamente!",
       showConfirmButton: false,
       timer: 1500,
     });

@@ -1,0 +1,19 @@
+#carrito-columna {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: none;
+}
+
+@media (min-width: 992px) {
+    #carrito-columna {
+        position: sticky;
+        top: 0;
+        width: 25%; /* Ajusta el ancho según tus necesidades */
+        margin-left: auto;
+        margin-right: 0; /* Nueva propiedad para colocar a la derecha */
+    }
+}
