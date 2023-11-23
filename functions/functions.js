@@ -46,12 +46,19 @@ document
       event.preventDefault();
       return;
     }
+
     event.preventDefault();
-    window.location.href = "html/products.html";
+
+    // Muestra el mensaje de éxito
     Swal.fire({
       icon: "success",
       title: "El formulario se ha completado exitosamente!",
       showConfirmButton: false,
       timer: 1500,
     });
+
+    // Espera 1500 milisegundos (1.5 segundos) y luego redirige a la página
+    setTimeout(function () {
+      window.location.href = "html/products.html";
+    }, 1500);
   });
