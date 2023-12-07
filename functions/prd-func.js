@@ -1,4 +1,3 @@
-// prd-func.js
 let productos;
 let carrito = [];
 
@@ -8,7 +7,7 @@ async function cargarProductos() {
     productos = await response.json();
     console.log("Productos cargados:", productos);
     cargarCarritoDesdeLocalStorage();
-    mostrarProductos(); // Agrega esta línea
+    mostrarProductos();
   } catch (error) {
     console.error("Error al cargar los productos:", error);
   }
@@ -41,19 +40,11 @@ function cargarCarritoDesdeLocalStorage() {
 }
 
 function mostrarCarrito() {
-  // Implementa la lógica para mostrar el carrito en el HTML de products
   let carritoContainer = document.getElementById("carrito-container");
-  // Puedes usar un bucle similar al que se usa en generarHTMLProducto para mostrar los productos en el carrito
-  // Asegúrate de que el HTML resultante sea similar al que se usa en generarHTMLProducto
-  // ...
 }
-// prd-func.js
-
-// ... (código existente)
 
 function mostrarProductos() {
   let container = document.getElementById("productos-container");
-
   // Genera el HTML para cada producto
   for (let i = 0; i < productos.length; i++) {
     container.innerHTML += generarHTMLProducto(i);
