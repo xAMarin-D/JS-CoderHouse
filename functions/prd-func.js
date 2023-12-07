@@ -1,53 +1,25 @@
-let productos = [
-  {
-    id: 1,
-    nombre: "Corta viento Nike",
-    descripcion: "Color: Blanco",
-    precio: 20000,
-    imagen: "../media/media1.png",
-  },
-  {
-    id: 2,
-    nombre: "Polera CMP",
-    descripcion: "Color: Celeste",
-    precio: 15000,
-    imagen: "../media/media2.png",
-  },
-  {
-    id: 3,
-    nombre: "Polera Polo",
-    descripcion: "Color Rojo",
-    precio: 30000,
-    imagen: "../media/media3.png",
-  },
-  {
-    id: 4,
-    nombre: "Mochila Gris",
-    descripcion: "Color: Gris",
-    precio: 45000,
-    imagen: "../media/media4.png",
-  },
-  {
-    id: 5,
-    nombre: "Cama King",
-    descripcion: "Color: Gris",
-    precio: 8000,
-    imagen: "../media/media5.png",
-  },
-  {
-    id: 6,
-    nombre: "Zapatilla Puma",
-    descripcion: "Color: Negro",
-    precio: 30000,
-    imagen: "../media/media6.png",
-  },
-];
-
+// prd-func.js
+let productos;
 let carrito = [];
+
+async function cargarProductos() {
+  try {
+    const response = await fetch("../json-data/data.json");
+    productos = await response.json();
+    console.log("Productos cargados:", productos);
+    cargarCarritoDesdeLocalStorage();
+    mostrarProductos(); // Agrega esta línea
+  } catch (error) {
+    console.error("Error al cargar los productos:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", cargarProductos);
 
 function agregarAlCarro(indice) {
   carrito.push(productos[indice]);
   mostrarCarrito();
+  guardarCarritoEnLocalStorage();
   Swal.fire({
     icon: "success",
     title: "Producto añadido al carrito: " + productos[indice].nombre,
@@ -56,54 +28,36 @@ function agregarAlCarro(indice) {
   });
 }
 
-function mostrarCarrito() {
-  let carritoContainer = document.getElementById("carrito-container");
-  let carritoColumna = document.getElementById("carrito-columna");
-  let totalContainer = document.getElementById("total");
-  let ivaContainer = document.getElementById("iva");
-  let totalConIvaContainer = document.getElementById("total-con-iva");
+function guardarCarritoEnLocalStorage() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
 
-  carritoContainer.innerHTML = ""; // Limpia el contenido actual
-
-  if (carrito.length === 0) {
-    carritoColumna.style.display = "none"; // Oculta la columna del carrito si está vacío
-  } else {
-    carritoColumna.style.display = "block"; // Muestra la columna del carrito
-    let total = 0;
-
-    carrito.forEach((producto) => {
-      carritoContainer.innerHTML += generarHTMLCarrito(producto);
-      total += producto.precio; // Suma el precio de cada producto al total
-    });
-
-    // Calcula el IVA (3% del total)
-    let iva = total * 0.03;
-
-    // Calcula el total más el IVA
-    let totalConIva = total + iva;
-
-    // Actualiza los elementos HTML
-    totalContainer.textContent = total.toFixed(2); // Muestra el total con dos decimales
-    ivaContainer.textContent = iva.toFixed(2); // Muestra el IVA con dos decimales
-    totalConIvaContainer.textContent = totalConIva.toFixed(2); // Muestra el total más IVA
+function cargarCarritoDesdeLocalStorage() {
+  const carritoGuardado = localStorage.getItem("carrito");
+  if (carritoGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    mostrarCarrito();
   }
 }
 
-function generarHTMLCarrito(producto) {
-  return `
-      <div class="card mb-2">
-          <div class="card-body">
-              <h5 class="card-title">${producto.nombre}</h5>
-              <p class="card-text">${producto.descripcion}</p>
-              <p class="card-text">Precio: $${producto.precio}</p>
-          </div>
-      </div>
-  `;
+function mostrarCarrito() {
+  // Implementa la lógica para mostrar el carrito en el HTML de products
+  let carritoContainer = document.getElementById("carrito-container");
+  // Puedes usar un bucle similar al que se usa en generarHTMLProducto para mostrar los productos en el carrito
+  // Asegúrate de que el HTML resultante sea similar al que se usa en generarHTMLProducto
+  // ...
 }
+// prd-func.js
 
-//Log para validar el carrito
-function verCarrito() {
-  console.log(carrito);
+// ... (código existente)
+
+function mostrarProductos() {
+  let container = document.getElementById("productos-container");
+
+  // Genera el HTML para cada producto
+  for (let i = 0; i < productos.length; i++) {
+    container.innerHTML += generarHTMLProducto(i);
+  }
 }
 
 function generarHTMLProducto(indice) {

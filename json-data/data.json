@@ -1,0 +1,42 @@
+[{
+    "id": 1,
+    "nombre": "Corta viento Nike",
+    "descripcion": "Color: Blanco",
+    "precio": 20000,
+    "imagen": "../media/media1.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Polera CMP",
+    "descripcion": "Color: Celeste",
+    "precio": 15000,
+    "imagen": "../media/media2.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Polera Polo",
+    "descripcion": "Color Rojo",
+    "precio": 30000,
+    "imagen": "../media/media3.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Mochila Gris",
+    "descripcion": "Color: Gris",
+    "precio": 45000,
+    "imagen": "../media/media4.png"
+  },
+  {
+    "id": 5,
+    "nombre": "Cama King",
+    "descripcion": "Color: Gris",
+    "precio": 8000,
+    "imagen": "../media/media5.png"
+  },
+  {
+    "id": 6,
+    "nombre": "Zapatilla Puma",
+    "descripcion": "Color: Negro",
+    "precio": 30000,
+    "imagen": "../media/media6.png"
+  }]
