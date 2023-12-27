@@ -19,6 +19,7 @@ function agregarAlCarro(indice) {
   carrito.push(productos[indice]);
   mostrarCarrito();
   guardarCarritoEnLocalStorage();
+  actualizarContadorCarrito();
   Swal.fire({
     icon: "success",
     title: "Producto añadido al carrito: " + productos[indice].nombre,
@@ -26,7 +27,6 @@ function agregarAlCarro(indice) {
     timer: 1500,
   });
 }
-
 function guardarCarritoEnLocalStorage() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
@@ -43,9 +43,12 @@ function mostrarCarrito() {
   let carritoContainer = document.getElementById("carrito-container");
 }
 
+function actualizarContadorCarrito() {
+  const contadorCarrito = document.getElementById("contador-carrito");
+  contadorCarrito.textContent = `(${carrito.length})`;
+}
 function mostrarProductos() {
   let container = document.getElementById("productos-container");
-  // Genera el HTML para cada producto
   for (let i = 0; i < productos.length; i++) {
     container.innerHTML += generarHTMLProducto(i);
   }

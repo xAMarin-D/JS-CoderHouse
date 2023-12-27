@@ -59,4 +59,5 @@ function eliminarDelCarrito(indice) {
 
   mostrarCarrito();
   guardarCarritoEnLocalStorage();
+  actualizarContadorCarrito();
 }
