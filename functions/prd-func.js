@@ -63,7 +63,7 @@ function generarHTMLProducto(indice) {
           <h5 class="card-title">${productos[indice].nombre}</h5>
           <p class="card-text">${productos[indice].descripcion}</p>
           <p class="card-text">Precio: $${productos[indice].precio}</p>
-          <button class="btn btn-primary" onclick="agregarAlCarro(${indice})">Comprar</button>
+          <button class="btn btn-primary w-100 text-center" onclick="agregarAlCarro(${indice})">Comprar</button>
         </div>
       </div>
     </div>
