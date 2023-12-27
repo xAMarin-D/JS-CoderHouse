@@ -49,6 +49,7 @@ function actualizarContadorCarrito() {
 }
 function mostrarProductos() {
   let container = document.getElementById("productos-container");
+
   for (let i = 0; i < productos.length; i++) {
     container.innerHTML += generarHTMLProducto(i);
   }

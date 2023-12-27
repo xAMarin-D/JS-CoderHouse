@@ -61,6 +61,11 @@
       function irAlCarrito() {
         window.location.href = "carrito.html";
       }
+
+      window.addEventListener("popstate", function (event) {
+        // Este evento se dispara cuando se realiza una acción de retroceso en el navegador
+        actualizarContadorCarrito();
+      });
     </script>
   </body>
 </html>

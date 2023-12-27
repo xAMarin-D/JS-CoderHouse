@@ -68,3 +68,18 @@ body {
   #productos-container {
     margin-top: 20px;
   }
+
+  /*Carrito*/
+
+  .back-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Ajusta según sea necesario */
+  }
+
+  .arrow {
+    margin-right: 5px;
+  }

@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
   mostrarCarrito();
 });
 
+window.addEventListener("popstate", function (event) {
+  cargarCarritoDesdeLocalStorage();
+  mostrarCarrito();
+});
+
 function mostrarCarrito() {
   let carritoContainer = document.getElementById("carrito-container");
 
@@ -10,6 +15,10 @@ function mostrarCarrito() {
 
   if (carrito.length === 0) {
     carritoContainer.innerHTML = "<p>El carrito está vacío.</p>";
+    // Si el carrito está vacío, establecer los valores en 0
+    document.getElementById("total").textContent = "0.00";
+    document.getElementById("iva").textContent = "0.00";
+    document.getElementById("total-con-iva").textContent = "0.00";
   } else {
     let total = 0;
 
@@ -28,7 +37,6 @@ function mostrarCarrito() {
       totalConIva.toFixed(2);
   }
 }
-
 function generarHTMLCarrito(producto, indice) {
   return `
     <div class="card mb-2">
@@ -37,14 +45,13 @@ function generarHTMLCarrito(producto, indice) {
         <img src="${producto.imagen}" alt="${producto.nombre}" class="img-thumbnail">
         <p class="card-text">${producto.descripcion}</p>
         <p class="card-text">Precio: $${producto.precio}</p>
-        <button type="button" class="btn btn-danger position-absolute top-0 end-0 m-2" onclick="eliminarDelCarrito(${indice})">
+        <button type="button" class="btn btn-danger position-absolute bottom-0 end-0 m-2" onclick="eliminarDelCarrito(${indice})" style="margin-bottom: 10px;">
           Eliminar <span class="ms-1" aria-hidden="true">&times;</span>
         </button>
       </div>
     </div>
   `;
 }
-
 function eliminarDelCarrito(indice) {
   const nombreProducto = carrito[indice].nombre;
 
@@ -60,4 +67,12 @@ function eliminarDelCarrito(indice) {
   mostrarCarrito();
   guardarCarritoEnLocalStorage();
   actualizarContadorCarrito();
+}
+
+function irAlPago() {
+  Swal.fire({
+    icon: "info",
+    title: "¡Funcionalidad de pago en desarrollo!",
+    text: "Pronto podrás realizar el pago.",
+  });
 }
